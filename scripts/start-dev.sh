@@ -17,22 +17,61 @@ if ! command -v node &> /dev/null; then
     exit 1
 fi
 
+# Function to cleanup processes
+cleanup() {
+    echo ""
+    echo "🛑 Stopping services..."
+    if [ ! -z "$BACKEND_PID" ] && kill -0 "$BACKEND_PID" 2>/dev/null; then
+        kill "$BACKEND_PID" 2>/dev/null
+        echo "   ✅ Backend stopped"
+    fi
+    if [ ! -z "$FRONTEND_PID" ] && kill -0 "$FRONTEND_PID" 2>/dev/null; then
+        kill "$FRONTEND_PID" 2>/dev/null
+        echo "   ✅ Frontend stopped"
+    fi
+    exit 0
+}
+
+# Set up signal handling
+trap cleanup INT TERM
+
 # Start backend in background
 echo "🚀 Starting Go backend server..."
-cd backend
+if ! cd backend; then
+    echo "❌ Failed to change to backend directory"
+    exit 1
+fi
+
 go run . &
 BACKEND_PID=$!
 cd ..
 
-# Wait a moment for backend to start
-sleep 2
+# Wait for backend to start and check if it's running
+sleep 3
+if ! kill -0 "$BACKEND_PID" 2>/dev/null; then
+    echo "❌ Backend failed to start"
+    exit 1
+fi
 
 # Start frontend
 echo "🎨 Starting React frontend..."
-cd frontend
+if ! cd frontend; then
+    echo "❌ Failed to change to frontend directory"
+    cleanup
+    exit 1
+fi
+
 npm start &
 FRONTEND_PID=$!
 cd ..
+
+# Wait for frontend to start and check if it's running
+sleep 3
+if ! kill -0 "$FRONTEND_PID" 2>/dev/null; then
+    echo "❌ Frontend failed to start"
+    cleanup
+    exit 1
+fi
 
 echo ""
 echo "✅ Services started successfully!"
@@ -41,7 +80,5 @@ echo "🔧 Backend API: http://localhost:8080"
 echo ""
 echo "To stop services, press Ctrl+C"
 
-# Wait for interrupt
-trap "echo ''; echo '🛑 Stopping services...'; kill $BACKEND_PID $FRONTEND_PID 2>/dev/null; exit 0" INT
-
+# Wait for processes to finish or be interrupted
 wait 
