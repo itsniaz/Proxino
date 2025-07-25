@@ -8,7 +8,7 @@ set -e
 BINARY_NAME="lan-relay"
 INSTALL_DIR="/usr/local/bin"
 TEMP_DIR="/tmp/lan-relay-install"
-REPO_URL="https://github.com/yourusername/local_router"
+REPO_URL="https://github.com/itsniaz/proxino"
 
 # Colors for output
 RED='\033[0;31m'

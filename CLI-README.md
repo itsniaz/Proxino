@@ -7,12 +7,12 @@
 ### One-Line Installation
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/yourusername/local_router/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/itsniaz/proxino/main/install.sh | bash
 ```
 
 Or download and inspect the script first:
 ```bash
-curl -fsSL https://raw.githubusercontent.com/yourusername/local_router/main/install.sh -o install.sh
+curl -fsSL https://raw.githubusercontent.com/itsniaz/proxino/main/install.sh -o install.sh
 chmod +x install.sh
 ./install.sh
 ```
@@ -22,8 +22,8 @@ chmod +x install.sh
 1. **Prerequisites**: Go 1.19+ and Node.js 16+
 2. **Clone and build**:
    ```bash
-   git clone https://github.com/yourusername/local_router.git
-   cd local_router
+   git clone https://github.com/itsniaz/proxino.git
+   cd proxino
    make install
    ```
 
@@ -109,8 +109,8 @@ http://localhost:8080/proxy/[IP]:[PORT]/[PATH]
 
 ```bash
 # Clone repository
-git clone https://github.com/yourusername/local_router.git
-cd local_router
+git clone https://github.com/itsniaz/proxino.git
+cd proxino
 
 # Build everything
 make build
@@ -136,7 +136,7 @@ make clean
 
 ### Project Structure
 ```
-local_router/
+proxino/
 ├── backend/           # Go CLI and server
 │   ├── cmd/          # CLI commands
 │   ├── internal/     # Internal packages
@@ -175,7 +175,7 @@ NGROK_TOKEN=your_ngrok_token_here
 ## 📦 Distribution
 
 ### Pre-built Binaries
-Download platform-specific binaries from [Releases](https://github.com/yourusername/local_router/releases):
+Download platform-specific binaries from [Releases](https://github.com/itsniaz/proxino/releases):
 
 - `lan-relay-1.0.0-linux-amd64` - Linux x64
 - `lan-relay-1.0.0-linux-arm64` - Linux ARM64
@@ -209,9 +209,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🆘 Support
 
-- **Issues**: [GitHub Issues](https://github.com/yourusername/local_router/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/yourusername/local_router/discussions)
-- **Wiki**: [Documentation Wiki](https://github.com/yourusername/local_router/wiki)
+- **Issues**: [GitHub Issues](https://github.com/itsniaz/proxino/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/itsniaz/proxino/discussions)
+- **Wiki**: [Documentation Wiki](https://github.com/itsniaz/proxino/wiki)
 
 ## 🙏 Acknowledgments
 

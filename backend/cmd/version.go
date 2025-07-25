@@ -14,7 +14,7 @@ var versionCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Printf("LAN Relay v%s\n", version)
 		fmt.Println("A secure local network proxy with web dashboard")
-		fmt.Println("GitHub: https://github.com/yourusername/local_router")
+		fmt.Println("GitHub: https://github.com/itsniaz/proxino")
 	},
 }
 

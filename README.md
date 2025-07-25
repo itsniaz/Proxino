@@ -49,7 +49,7 @@ A powerful system that allows sending **HTTP/HTTPS** requests from anywhere (e.g
 
 ```bash
 git clone <your-repo>
-cd local_router
+cd proxino
 
 # Install Go dependencies
 cd backend
@@ -152,7 +152,7 @@ NGROK_DOMAIN=custom.ngrok.io # Optional: custom ngrok domain
 ## 🏗️ Project Structure
 
 ```
-local_router/
+proxino/
 ├── backend/                 # Go backend server
 │   ├── internal/
 │   │   ├── config/         # Configuration management
